@@ -16,12 +16,17 @@ const createRequest = (options = {}) => {
   } else {
     formData = new FormData();
 
-    for (key in options.data) {
+    for(key in options.data) {
       formData.append(key, options.data[key]);
     };
 
-    xhr.open(options.method, generalURL);
-    xhr.send(formData);
+    try {
+      xhr.open(options.method, generalURL);
+      xhr.send(formData);
+    }
+    catch (error) {
+      options.callback(error);
+    };
   };
 };
 
