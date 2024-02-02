@@ -18,7 +18,15 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
+    const buttonToggle = document.querySelector('.sidebar-toggle');
+    const sideBarMini = document.querySelector('.sidebar-mini');
 
+    buttonToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      sideBarMini.classList.toggle('sidebar-open');
+      sideBarMini.classList.toggle('sidebar-collapse');
+    })
   }
 
   /**
@@ -29,6 +37,38 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    const enterButton = document.querySelector('.menu-item_login');
+    const registrationButton = document.querySelector('.menu-item_register');
+    const exitButton = document.querySelector('.menu-item_logout');
 
-  }
-}
+    enterButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      let classes = enterButton.className.split(' ');
+      let typeOfButton = classes.find(elem => elem.includes('menu-item_')).substring(10);
+
+      App.getModal(typeOfButton).open();
+    });
+
+    registrationButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      let classes = registrationButton.className.split(' ');
+      let typeOfButton = classes.find(elem => elem.includes('menu-item_')).substring(10);
+
+      App.getModal(typeOfButton).open();
+    });
+
+    exitButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      User.logout((err, response) => {
+        if(err) {
+          alert('ошибка выхода')
+        };
+
+        App.setState('init');
+      });
+    });
+  };
+};

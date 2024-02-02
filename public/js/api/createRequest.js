@@ -29,15 +29,3 @@ const createRequest = (options = {}) => {
     };
   };
 };
-
-createRequest({
-  url: 'user',
-  data: {
-    mail: 'ivan@poselor.ru',
-    password: 'odinodin'
-  },
-  method: 'POST',
-  callback: (err,response) => {
-    console.log(err,response)
-  }
-})
