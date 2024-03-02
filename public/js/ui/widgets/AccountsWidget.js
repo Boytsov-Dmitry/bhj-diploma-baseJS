@@ -68,7 +68,7 @@ class AccountsWidget {
   update() {
     const authUser = User.current();
 
-    Account.list(currentUser, ( err, response ) => {
+    Account.list(authUser, ( err, response ) => {
       if (err) {
         alert('передан не верный Account.list');
       };
