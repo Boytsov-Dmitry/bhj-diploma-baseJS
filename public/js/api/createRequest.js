@@ -21,9 +21,11 @@ const createRequest = (options = {}) => {
   } else {
     formData = new FormData();
 
-    for(key in options.data) {
-      formData.append(key, options.data[key]);
-    };
+    // if (options.data) {
+      for(key in options.data) {
+        formData.append(key, options.data[key]);
+      };
+    // };
   };
 
   try {
@@ -34,19 +36,8 @@ const createRequest = (options = {}) => {
     options.callback(error);
   };
 
-  xhr.addEventListener('load', () => {     
+  xhr.addEventListener('load', () => { 
+    // console.log(xhr.response)    
     options.callback(null, xhr.response);
   });
 };
-
-createRequest({
-  url: '/user/current',
-  method: 'GET',
-  data: {
-    email: 'demo@demo.com',
-    password: 'demo'
-  },
-  callback: (error, response) => {
-    console.log(error, response);
-  }
-});

@@ -147,7 +147,7 @@
 ### renderTitle
 
 ```html
-<span class="content-title">Название счёта</span>
+<span class="content-title">Назваsние счёта</span>
 <small class="content-description">Счёт</small>
 ```
 

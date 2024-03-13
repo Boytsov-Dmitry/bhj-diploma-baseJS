@@ -151,6 +151,7 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date){
+    cons
 
     let day = date.getDate();
     let month = date.toLocaleString('ru', { month: 'long' });
@@ -167,6 +168,7 @@ class TransactionsPage {
    * */
   getTransactionHTML(item){
     let newDate = this.formatDate(item.created_at);
+    console.log(newDate)
 
     return `<div class="transaction transaction_${item.type} row">
               <div class="col-md-7 transaction__details">

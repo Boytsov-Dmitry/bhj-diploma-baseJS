@@ -32,7 +32,7 @@ class UserWidget {
     if(authorisationUser) {
       const name = document.querySelector('.user-name');
 
-      name.textContent = currentUser.name;
+      name.textContent = authorisationUser.name;
     };
   };
 };

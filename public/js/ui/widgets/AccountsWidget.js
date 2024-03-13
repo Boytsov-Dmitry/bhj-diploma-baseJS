@@ -68,17 +68,22 @@ class AccountsWidget {
   update() {
     const authUser = User.current();
 
-    Account.list(authUser, ( err, response ) => {
-      if (err) {
-        alert('передан не верный Account.list');
-      };
 
-      this.clear();
+    if (authUser !== null) {
+      Account.list(authUser, ( err, response ) => {
+        if (err) {
+          alert('передан не верный Account.list');
+        };
 
-      response.data.forEach(e => {
-        this.renderItem(e);             
-      }); 
-    });
+        this.clear();
+
+        if(response) {
+          response.data.forEach(e => {
+            this.renderItem(e);             
+          }); 
+        }
+      });
+    };
   };
 
   /**
