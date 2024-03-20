@@ -14,7 +14,7 @@ class CreateAccountForm extends AsyncForm {
         console.log('ошибка создания счета: ', err);
         return;
       };
-    
+
       App.getModal('createAccount').close();
       this.element.reset();
       App.update();

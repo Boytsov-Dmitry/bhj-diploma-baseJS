@@ -11,21 +11,36 @@ class TransactionsPage {
    * через registerEvents()
    * */
   constructor( element ) {
-    this.element = element;
-    this.option = '';
+      this.element = element;
+      this.option = '';
+      this.registerEvents();
+    }
 
-    if(this.element === undefined) {
-      alert('счет не существует');
+    // if(this.element === undefined) {
+    //   alert('счет не существует');
+    // };
+    get element() {
+      return this._element;
+    };
+  
+    set element(value) {
+      if (!value) {
+        alert('счет не существует');
+      } else {
+        this._element = value;
+      };
     };
 
-    this.registerEvents();
-  };
 
   /**
    * Вызывает метод render для отрисовки страницы
    * */
   update() {
-    this.render();
+    if (this.option !== '') {
+      this.render(this.option);
+    } else {
+      this.render();
+    }
   };
 
   /**
@@ -114,9 +129,13 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
-    this.renderTransactions();
+    if (!options) {
+      return;
+    };
 
-    this.options = options;
+    this.renderTransactions([]);
+
+    this.option = options;
 
     Account.get(options.account_id, ( err, responseGet ) => {
       if (err) {
@@ -124,6 +143,10 @@ class TransactionsPage {
       };
 
       this.renderTitle(responseGet.data.name);
+
+      Transaction.list({ account_id: responseGet.data.id }, ( err, responseList ) => {
+          this.renderTransactions(responseList.data);
+      });
     });
   };
 
@@ -133,9 +156,9 @@ class TransactionsPage {
    * Устанавливает заголовок: «Название счёта»
    * */
   clear() {
-    this.renderTransactions();
+    this.renderTransactions([]);
     this.renderTitle('Название счёта');
-    this.options = '';
+    this.option = '';
   }
 
   /**
@@ -151,8 +174,6 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date){
-    cons
-
     let day = date.getDate();
     let month = date.toLocaleString('ru', { month: 'long' });
     let year = getFullYear();

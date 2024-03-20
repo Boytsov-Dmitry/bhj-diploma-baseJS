@@ -15,9 +15,17 @@ class AsyncForm {
   constructor(element) {
     this.element = element;
     this.registerEvents();
+  };
 
-    if(this.element === undefined) {
-      alert('Передан пустой элемент AsyncForm');
+  get element() {
+    return this._element;
+  };
+
+  set element(value) {
+    if (!value) {
+      throw new Error("форма не существует");
+    } else {
+      this._element = value;
     };
   };
 

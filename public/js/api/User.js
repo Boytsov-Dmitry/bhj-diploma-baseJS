@@ -96,7 +96,7 @@ class User {
       callback: (err, response) => {
         if(response.success) {
           this.unsetCurrent(this.current())
-        }
+        };
         callback(err, response);
       },
     });

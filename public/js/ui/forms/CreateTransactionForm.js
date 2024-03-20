@@ -22,12 +22,13 @@ class CreateTransactionForm extends AsyncForm {
         alert('передан не верный Account.list');
       };
 
+
       const activity = this.element.getAttribute('id').slice(4, -5);
       const activityType = document.querySelector(`#${activity}-accounts-list`);
       activityType.innerHTML = '';
 
       if(response) {
-        response.data.forEach(e => {
+        response.data.forEach((e) => {
           activityType.insertAdjacentHTML('beforeEnd', `<option value="${e.id}">${e.name}</option>`);
         });
       };
@@ -45,6 +46,8 @@ class CreateTransactionForm extends AsyncForm {
       if (err) {
         alert('не верно введен onSubmit');
       };
+
+
 
       const id = this.element.getAttribute('id').slice(4, -5);
       const form = 'new' + id.substring(0, 1).toUpperCase() + id.substring(1);

@@ -9,23 +9,23 @@ const createRequest = (options = {}) => {
 
   let formData;
   let generalURL = options.url;
-  // console.log(generalURL)
+
 
 
   if(options.method === 'GET') {
     if (options.data) {
-      generalURL = generalURL + '?mail=' + options["data"]["email"] + '&password=' + options['data']['password'];
-    
-      // console.log(generalURL)
+      // generalURL = generalURL + '?mail=' + options["data"]["email"] + '&password=' + options['data']['password'];
+      for (key in options.data) {
+        generalURL = generalURL+ '?' + key + '=' + options.data[key] + '&';
+      };
+      generalURL = generalURL.slice(0, -1);
     };
   } else {
     formData = new FormData();
 
-    // if (options.data) {
-      for(key in options.data) {
-        formData.append(key, options.data[key]);
-      };
-    // };
+    for(key in options.data) {
+      formData.append(key, options.data[key]);
+    };
   };
 
   try {
