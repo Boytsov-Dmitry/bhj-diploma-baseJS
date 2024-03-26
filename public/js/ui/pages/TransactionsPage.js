@@ -15,21 +15,22 @@ class TransactionsPage {
       this.lastOptions = '';
       this.registerEvents();
 
-      if(this.element === undefined) {
+      // if(this.element === undefined) {
+      //   alert('счет не существует');
+      // };
+    };
+    
+    get element() {
+      return this._element;
+    };
+  
+    set element(value) {
+      if (!value) {
         alert('счет не существует');
+      } else {
+        this._element = value;
       };
     };
-    // get element() {
-    //   return this._element;
-    // };
-  
-    // set element(value) {
-    //   if (!value) {
-    //     alert('счет не существует');
-    //   } else {
-    //     this._element = value;
-    //   };
-    // };
 
 
   /**
@@ -37,8 +38,8 @@ class TransactionsPage {
    * */
   update() {
     this.render(this.lastOptions);
-    // if (this.option !== '') {
-    //   this.render(this.option);
+    // if (this.lastOptions !== '') {
+    //   this.render(this.lastOptions);
     // } else {
     //   this.render();
     // }
@@ -58,7 +59,6 @@ class TransactionsPage {
       let removeButton = Array.from(document.getElementsByClassName('transaction__remove'));
     
       if (e.target.closest('.remove-account') === removeActivity) {
-        console.log(removeActivity)
         e.preventDefault();
         this.removeAccount();
       };
@@ -82,7 +82,7 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if (this.lastOptions === '') {
+    if (this.option === '') {
       return;
     };
 
@@ -118,7 +118,7 @@ class TransactionsPage {
         };
   
         if (responseRemove.success) {
-          App.update();
+          this.update();
         };
       });
     };
