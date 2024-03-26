@@ -33,121 +33,22 @@
   ],
   "transactions": [
     {
-      "account_id": "3",
-      "created_at": "2017-10-15 13:27:02",
-      "id": "9",
-      "name": "На банду",
-      "sum": 15000,
-      "type": "expense",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2017-09-17 13:27:02",
-      "id": "10",
-      "name": "На стволы",
-      "sum": 6000,
-      "type": "expense",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2017-12-27 13:27:02",
-      "id": "11",
-      "name": "Прибыль с банка",
-      "sum": 1500000,
+      "id": "boq3044pklu8oy2k0",
       "type": "income",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2018-01-15 13:27:02",
-      "id": "12",
-      "name": "Прибыль с магазина",
-      "sum": 300000,
-      "type": "income",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2018-01-15 13:27:02",
-      "id": "13",
-      "name": "Подарок сизого",
-      "sum": 20000,
-      "type": "income",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2017-09-15 13:27:02",
-      "id": "14",
-      "name": "На охрану",
-      "sum": 60000,
-      "type": "expense",
-      "user_id": "1"
-    },
-    {
-      "account_id": "3",
-      "created_at": "2017-10-15 13:27:02",
-      "id": "15",
-      "name": "На бумер",
-      "sum": 300000,
-      "type": "expense",
-      "user_id": "1"
-    },
-    {
-      "id": "boq304a54lu8dxsog",
-      "type": "income",
-      "name": "Store",
-      "sum": 2222,
+      "name": "3333",
+      "sum": 3333,
       "account_id": "3",
       "user_id": "1",
-      "created_at": "2024-03-26T13:00:57.327Z"
+      "created_at": "2024-03-26T18:09:05.903Z"
     },
     {
-      "id": "boq304bqclu8dydnp",
+      "id": "boq3047n4lu8p3y4d",
       "type": "income",
-      "name": "DDDD",
-      "sum": 20333,
-      "account_id": "boq30491wlu8dxwr8",
-      "user_id": "1",
-      "created_at": "2024-03-26T13:01:24.516Z"
-    },
-    {
-      "id": "boq304b9glu8gn1qf",
-      "type": "income",
-      "name": "1 продажа",
-      "sum": 5566,
-      "account_id": "boq30491wlu8dxwr8",
-      "user_id": "1",
-      "created_at": "2024-03-26T14:16:34.694Z"
-    },
-    {
-      "id": "boq304e58lu8grbbq",
-      "type": "income",
-      "name": "ee",
-      "sum": 111,
+      "name": "11111",
+      "sum": 11111,
       "account_id": "3",
       "user_id": "1",
-      "created_at": "2024-03-26T14:19:53.749Z"
-    },
-    {
-      "id": "boq304hdwlu8grlyk",
-      "type": "expense",
-      "name": "ffff",
-      "sum": 32323,
-      "account_id": "3",
-      "user_id": "1",
-      "created_at": "2024-03-26T14:20:07.531Z"
-    },
-    {
-      "id": "boq30432glu8luid1",
-      "type": "expense",
-      "name": "eee",
-      "sum": 5554,
-      "account_id": "3",
-      "user_id": "1",
-      "created_at": "2024-03-26T16:42:20.916Z"
+      "created_at": "2024-03-26T18:13:40.092Z"
     }
   ]
 }

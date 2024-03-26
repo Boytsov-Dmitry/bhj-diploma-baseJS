@@ -37,6 +37,11 @@ class TransactionsPage {
    * */
   update() {
     this.render(this.lastOptions);
+    // if (this.option !== '') {
+    //   this.render(this.option);
+    // } else {
+    //   this.render();
+    // }
   };
 
   /**
@@ -53,14 +58,15 @@ class TransactionsPage {
       let removeButton = Array.from(document.getElementsByClassName('transaction__remove'));
     
       if (e.target.closest('.remove-account') === removeActivity) {
+        console.log(removeActivity)
         e.preventDefault();
         this.removeAccount();
       };
       
-      for (let i = 0; i < removeButton.length; i++) {
-        if (e.target.closest('.transaction__remove') === removeButton[i]) {
+      for (let item of removeButton) {
+        if (e.target.closest('.transaction__remove') === item) {
           e.preventDefault();
-          this.removeTransaction(removeButton[i].dataset.id);    
+          this.removeTransaction(item.dataset.id);
         };
       };
     });
@@ -138,7 +144,7 @@ class TransactionsPage {
 
       if (responseGet) {
         this.renderTitle(responseGet.data.name);
-  }
+      }
 
       // this.renderTitle(responseGet.data.name);
 
@@ -147,7 +153,7 @@ class TransactionsPage {
             alert('ошибка в списке транзакций');
           };
 
-          if(responseGet){
+          if(responseList){
             this.renderTransactions(responseList.data);
           };
       });
