@@ -19,7 +19,7 @@ class TransactionsPage {
       //   alert('счет не существует');
       // };
     };
-    
+
     get element() {
       return this._element;
     };
@@ -118,7 +118,7 @@ class TransactionsPage {
         };
   
         if (responseRemove.success) {
-          this.update();
+          App.update();
         };
       });
     };
