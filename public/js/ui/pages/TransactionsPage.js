@@ -129,8 +129,6 @@ class TransactionsPage {
       return;
     };
 
-    this.renderTransactions();
-
     this.lastOptions = options;
 
     Account.get(options.account_id, ( err, responseGet ) => {
