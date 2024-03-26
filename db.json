@@ -112,6 +112,42 @@
       "account_id": "boq30491wlu8dxwr8",
       "user_id": "1",
       "created_at": "2024-03-26T13:01:24.516Z"
+    },
+    {
+      "id": "boq304b9glu8gn1qf",
+      "type": "income",
+      "name": "1 продажа",
+      "sum": 5566,
+      "account_id": "boq30491wlu8dxwr8",
+      "user_id": "1",
+      "created_at": "2024-03-26T14:16:34.694Z"
+    },
+    {
+      "id": "boq304e58lu8grbbq",
+      "type": "income",
+      "name": "ee",
+      "sum": 111,
+      "account_id": "3",
+      "user_id": "1",
+      "created_at": "2024-03-26T14:19:53.749Z"
+    },
+    {
+      "id": "boq304hdwlu8grlyk",
+      "type": "expense",
+      "name": "ffff",
+      "sum": 32323,
+      "account_id": "3",
+      "user_id": "1",
+      "created_at": "2024-03-26T14:20:07.531Z"
+    },
+    {
+      "id": "boq30432glu8luid1",
+      "type": "expense",
+      "name": "eee",
+      "sum": 5554,
+      "account_id": "3",
+      "user_id": "1",
+      "created_at": "2024-03-26T16:42:20.916Z"
     }
   ]
 }

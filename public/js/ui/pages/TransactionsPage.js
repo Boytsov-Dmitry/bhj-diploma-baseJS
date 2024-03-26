@@ -12,35 +12,31 @@ class TransactionsPage {
    * */
   constructor( element ) {
       this.element = element;
-      this.option = '';
+      this.lastOptions = '';
       this.registerEvents();
-    };
 
-    // if(this.element === undefined) {
-    //   alert('счет не существует');
-    // };
-    get element() {
-      return this._element;
-    };
-  
-    set element(value) {
-      if (!value) {
+      if(this.element === undefined) {
         alert('счет не существует');
-      } else {
-        this._element = value;
       };
     };
+    // get element() {
+    //   return this._element;
+    // };
+  
+    // set element(value) {
+    //   if (!value) {
+    //     alert('счет не существует');
+    //   } else {
+    //     this._element = value;
+    //   };
+    // };
 
 
   /**
    * Вызывает метод render для отрисовки страницы
    * */
   update() {
-    if (this.option !== '') {
-      this.render(this.option);
-    } else {
-      this.render();
-    }
+    this.render(this.lastOptions);
   };
 
   /**
@@ -80,13 +76,13 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if (this.option === '') {
+    if (this.lastOptions === '') {
       return;
     };
 
     let question = confirm("Хотите удалить счет?");
     if (question) {
-      Account.remove({ id: this.option.account_id }, ( err, responseRemove ) => {
+      Account.remove({ id: this.lastOptions.account_id }, ( err, responseRemove ) => {
         if (err) {
           alert('не правильно передан Account.remove');
         };
@@ -135,21 +131,27 @@ class TransactionsPage {
 
     this.renderTransactions();
 
-    this.option = options;
+    this.lastOptions = options;
 
     Account.get(options.account_id, ( err, responseGet ) => {
       if (err) {
         alert('не правильно передан Account.get')
       };
 
-      this.renderTitle(responseGet.data.name);
+      if (responseGet) {
+        this.renderTitle(responseGet.data.name);
+  }
+
+      // this.renderTitle(responseGet.data.name);
 
       Transaction.list({ account_id: responseGet.data.id }, ( err, responseList ) => {
           if(err){
             alert('ошибка в списке транзакций');
           };
 
-          this.renderTransactions(responseList.data);
+          if(responseGet){
+            this.renderTransactions(responseList.data);
+          };
       });
     });
   };
@@ -162,7 +164,7 @@ class TransactionsPage {
   clear() {
     this.renderTransactions([]);
     this.renderTitle('Название счёта');
-    this.option = '';
+    this.lastOptions = '';
   }
 
   /**
@@ -178,13 +180,38 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date){
-    let day = date.getDate();
-    let month = date.toLocaleString('ru', { month: 'long' });
-    let year = getFullYear();
-    let hour = getHours();
-    let minutes = getMinutes();
 
-    return (`${day} ${month} ${year} г. в ${hour} ${minutes}`);
+    let dateForParse;
+
+    if (!date.includes('T')) {
+      let dateComponents = date.split(' ');
+      dateForParse = dateComponents[0] + 'T' + dateComponents[1];
+    } else {
+      dateForParse = date.split('.')[0];
+    }
+    
+    let dateObject = new Date(dateForParse);
+
+    let dateFormat = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    
+    return dateObject.toLocaleString("ru", dateFormat); 
+    // date = new Date(date)
+
+    // let day = date.getDate();
+    // let month = date.toLocaleString('ru', { month: 'long' });
+    // let year = getFullYear();
+    // let hour = getHours();
+    // let minutes = getMinutes();
+
+    // console.log((`${day} ${month} ${year} г. в ${hour} ${minutes}`));
+    
   };
 
   /**
@@ -193,7 +220,6 @@ class TransactionsPage {
    * */
   getTransactionHTML(item){
     let newDate = this.formatDate(item.created_at);
-    console.log(newDate)
 
     return `<div class="transaction transaction_${item.type} row">
               <div class="col-md-7 transaction__details">
@@ -216,6 +242,7 @@ class TransactionsPage {
                   </button>
               </div>
             </div>`;
+    
   };
 
   /**
@@ -229,9 +256,11 @@ class TransactionsPage {
       content.innerHTML = '';
     };
 
-    for (let i = 0; i < data.length; i++) {
-      let transactionHTML = this.getTransactionHTML(data[i]);
-      content.insertAdjacentHTML('beforeEnd', transactionHTML);
+    if(data.length !== 0) {
+      for (let i = 0; i < data.length; i++) {
+        let transactionHTML = this.getTransactionHTML(data[i]);
+        content.insertAdjacentHTML('beforeEnd', transactionHTML);
+      };
     };
   };
 };
