@@ -1,9 +1,9 @@
 class Entity {
-  entityUrl = '';
+  static url = '';
 
   static list(data, callback){
     createRequest({
-      url: this.entityUrl,
+      url: this.url,
       data,
       method: 'GET',
       callback,
@@ -12,7 +12,7 @@ class Entity {
 
   static create(data, callback) {
     createRequest({
-      url: this.entityUrl,
+      url: this.url,
       data,
       method: 'PUT',
       callback,
@@ -22,7 +22,7 @@ class Entity {
 
   static remove(data, callback ) {
     createRequest({
-      url: this.entityUrl,
+      url: this.url,
       data,
       method: 'DELETE',
       callback,

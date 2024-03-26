@@ -14,7 +14,7 @@ class TransactionsPage {
       this.element = element;
       this.option = '';
       this.registerEvents();
-    }
+    };
 
     // if(this.element === undefined) {
     //   alert('счет не существует');
@@ -133,7 +133,7 @@ class TransactionsPage {
       return;
     };
 
-    this.renderTransactions([]);
+    this.renderTransactions();
 
     this.option = options;
 
@@ -145,6 +145,10 @@ class TransactionsPage {
       this.renderTitle(responseGet.data.name);
 
       Transaction.list({ account_id: responseGet.data.id }, ( err, responseList ) => {
+          if(err){
+            alert('ошибка в списке транзакций');
+          };
+
           this.renderTransactions(responseList.data);
       });
     });

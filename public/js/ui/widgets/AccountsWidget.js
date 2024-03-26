@@ -17,9 +17,17 @@ class AccountsWidget {
     this.element = element;
     this.registerEvents();
     this.update()
+  };
 
-    if(this.element === undefined) {
-      alert('передан пустой AccountsWidget')
+  get element() {
+    return this._element;
+  };
+
+  set element(value) {
+    if (!value) {
+      throw new Error("элемент не существует");
+    } else {
+      this._element = value;
     };
   };
 
@@ -31,13 +39,8 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-    const createAcc = document.querySelector('.create-account');
     const panel = document.querySelector('.accounts-panel');
-
-    createAcc.addEventListener('click', () => {
-      App.getModal();
-      
-    })
+    const createAcc = document.querySelector('.create-account');
 
     panel.addEventListener('click', (e) => {
       let accCheck = Array.from(document.getElementsByClassName('account'));
@@ -95,7 +98,7 @@ class AccountsWidget {
     let accCheck = Array.from(document.getElementsByClassName('account'));
     
     for(let i = 0; i < accCheck.length; i++) {
-      e.remove(accCheck[i]);
+      accCheck[i].remove();
     };
   };
 
