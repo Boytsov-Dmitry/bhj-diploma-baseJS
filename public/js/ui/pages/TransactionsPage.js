@@ -38,11 +38,6 @@ class TransactionsPage {
    * */
   update() {
     this.render(this.lastOptions);
-    // if (this.lastOptions !== '') {
-    //   this.render(this.lastOptions);
-    // } else {
-    //   this.render();
-    // }
   };
 
   /**
@@ -52,23 +47,21 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    const wrapper = document.querySelector('.content-wrapper');
     const removeActivity = document.querySelector('.remove-account');
     
-    wrapper.addEventListener('click', (e) => {
-      let removeButton = Array.from(document.getElementsByClassName('transaction__remove'));
-    
+    this.element.addEventListener('click', (e) => {
+      e.preventDefault();
+      let removeButtons = Array.from(document.getElementsByClassName('transaction__remove'));
+
       if (e.target.closest('.remove-account') === removeActivity) {
-        e.preventDefault();
         this.removeAccount();
-      };
-      
-      for (let item of removeButton) {
+      }
+
+      for (let item of removeButtons) {
         if (e.target.closest('.transaction__remove') === item) {
-          e.preventDefault();
-          this.removeTransaction(item.dataset.id);
-        };
-      };
+          this.removeTransaction(item.dataset.id);    
+        }
+      }
     });
   }
 
@@ -118,7 +111,7 @@ class TransactionsPage {
         };
   
         if (responseRemove.success) {
-          App.update();
+          this.update();
         };
       });
     };
@@ -256,15 +249,15 @@ class TransactionsPage {
   renderTransactions(data){
     const content = document.querySelector('.content');
 
-    if (data.length === 0) {
+    // if (data.length === 0) {
       content.innerHTML = '';
-    };
+    // };
 
-    if(data.length !== 0) {
+    // if(data.length !== 0) {
       for (let i = 0; i < data.length; i++) {
         let transactionHTML = this.getTransactionHTML(data[i]);
         content.insertAdjacentHTML('beforeEnd', transactionHTML);
       };
-    };
+    // };
   };
 };

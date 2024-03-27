@@ -22,6 +22,9 @@ class CreateTransactionForm extends AsyncForm {
         alert('передан не верный Account.list');
       };
 
+      if (!response.success) {
+        return;
+      };
 
       const activity = this.element.getAttribute('id').slice(4, -5);
       const activityType = document.querySelector(`#${activity}-accounts-list`);

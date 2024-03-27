@@ -80,11 +80,9 @@ class AccountsWidget {
 
         this.clear();
 
-        if(response) {
-          response.data.forEach(e => {
-            this.renderItem(e);             
-          }); 
-        }
+        response.data.forEach(e => {
+          this.renderItem(e);             
+        }); 
       });
     };
   };
