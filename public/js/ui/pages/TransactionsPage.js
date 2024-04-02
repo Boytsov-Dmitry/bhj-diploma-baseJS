@@ -111,7 +111,7 @@ class TransactionsPage {
         };
   
         if (responseRemove.success) {
-          this.update();
+          App.update();
         };
       });
     };

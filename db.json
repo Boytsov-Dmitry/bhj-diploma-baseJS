@@ -24,6 +24,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "1",
+      "user_id": "1",
+      "id": "boq304lf4lui044kz"
     }
   ],
   "transactions": [
@@ -44,6 +49,69 @@
       "account_id": "3",
       "user_id": "1",
       "created_at": "2024-03-27T16:34:41.799Z"
+    },
+    {
+      "id": "boq304j0klui049b7",
+      "type": "income",
+      "name": "1",
+      "sum": 1,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:31:45.954Z"
+    },
+    {
+      "id": "boq304a58lui04dqc",
+      "type": "income",
+      "name": "44",
+      "sum": 32323,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:31:51.683Z"
+    },
+    {
+      "id": "boq304eq8lui04itv",
+      "type": "income",
+      "name": "1",
+      "sum": 111,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:31:58.290Z"
+    },
+    {
+      "id": "boq304bz4lui04ny0",
+      "type": "expense",
+      "name": "111",
+      "sum": 32323,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:32:04.919Z"
+    },
+    {
+      "id": "boq304bo8lui06reg",
+      "type": "income",
+      "name": "12321312",
+      "sum": 3213123,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:33:42.711Z"
+    },
+    {
+      "id": "boq304d9olui06ylg",
+      "type": "expense",
+      "name": "4432",
+      "sum": 22222,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:33:52.035Z"
+    },
+    {
+      "id": "boq304dcglui075bs",
+      "type": "expense",
+      "name": "3",
+      "sum": 444444444,
+      "account_id": "boq304lf4lui044kz",
+      "user_id": "1",
+      "created_at": "2024-04-02T06:34:00.759Z"
     }
   ]
 }
